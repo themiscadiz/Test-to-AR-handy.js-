@@ -103,6 +103,7 @@ function setupThree(){
 	// const container = document.getElementById( 'three' )
     console.log("here2");
 
+    // 2 lines of code from AR
     container = document.createElement('div');
 	document.body.appendChild(container);
 
@@ -142,20 +143,19 @@ function setupThree(){
 	scene.add( camera )
 
 
-	//  WebGL renderer.
-	//  https://threejs.org/docs/#api/en/renderers/WebGLRenderer
+	// //  WebGL renderer.
+	// //  https://threejs.org/docs/#api/en/renderers/WebGLRenderer
 
-	renderer = new THREE.WebGLRenderer({ antialias: true })
-	renderer.setPixelRatio( window.devicePixelRatio )
-	renderer.setSize( window.innerWidth, window.innerHeight )
-	renderer.shadowMap.enabled = true
-	renderer.shadowMap.type = THREE.PCFSoftShadowMap
-	renderer.physicallyCorrectLights = true
-	renderer.toneMapping = THREE.ACESFilmicToneMapping
-	renderer.outputEncoding = THREE.sRGBEncoding
-    renderer.xr.enabled = true
-    // before said VRButton
-    // container.appendChild( ARButton.createButton( renderer ))
+	// renderer = new THREE.WebGLRenderer({ antialias: true })
+	// renderer.setPixelRatio( window.devicePixelRatio )
+	// renderer.setSize( window.innerWidth, window.innerHeight )
+	// renderer.shadowMap.enabled = true
+	// renderer.shadowMap.type = THREE.PCFSoftShadowMap
+	// renderer.physicallyCorrectLights = true
+	// renderer.toneMapping = THREE.ACESFilmicToneMapping
+	// renderer.outputEncoding = THREE.sRGBEncoding
+    // renderer.xr.enabled = true
+    // container.appendChild( VRButton.createButton( renderer ))
 
 
     ////////////////////////
@@ -163,7 +163,14 @@ function setupThree(){
     // #3 Pick a three.js renderer
 			renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 			renderer.setPixelRatio(window.devicePixelRatio);
-			renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            renderer.shadowMap.enabled = true
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap
+            renderer.physicallyCorrectLights = true
+            renderer.toneMapping = THREE.ACESFilmicToneMapping
+            renderer.outputEncoding = THREE.sRGBEncoding
+
             renderer.xr.enabled = true; // we have to enable the renderer for webxr
             // container.appendChild(renderer.domElement);
             
@@ -173,8 +180,8 @@ function setupThree(){
     // Add an AR button to the window
     document.body.appendChild(ARButton.createButton(renderer));
             
-    // container.appendChild( renderer.domElement )
-    document.body.appendChild( renderer.domElement )
+    container.appendChild( renderer.domElement )
+    // document.body.appendChild( renderer.domElement )
 
 
 
