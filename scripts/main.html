@@ -146,12 +146,30 @@ function setupThree(){
 	renderer.outputEncoding = THREE.sRGBEncoding
 	renderer.xr.enabled = true
     // container.appendChild( ARButton.createButton( renderer ))
+
+
+    ////////////////////////
+// AR CODE
+    // #3 Pick a three.js renderer
+			renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.xr.enabled = true; // we have to enable the renderer for webxr
+            // origina
+            // container.appendChild(renderer.domElement);
+            // modification
+            document.body.appendChild(renderer.domElement);
+            
+////////////////////////
+
     
     // Add an AR button to the window
     document.body.appendChild(ARButton.createButton(renderer));
             
     // container.appendChild( renderer.domElement )
     document.body.appendChild( renderer.domElement )
+
+
 
 	//  Orbit controls.
 	//  https://threejs.org/docs/#examples/en/controls/OrbitControls
