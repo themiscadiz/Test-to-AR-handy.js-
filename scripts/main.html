@@ -81,6 +81,8 @@ console.log("here");
 //  so we’ll define them here in the outermost scope.
 //  https://developer.mozilla.org/en-US/docs/Glossary/Scope
 
+let container;
+
 let 
 camera,
 scene,
@@ -91,13 +93,20 @@ stats
 function setupThree(){
 	
 
+   
 
 	//  DOM container for Three’s CANVAS element.
 	//  https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
 	//  https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
 
-	const container = document.getElementById( 'three' )
+    // Original Line of Code
+	// const container = document.getElementById( 'three' )
     console.log("here2");
+
+    container = document.createElement('div');
+	document.body.appendChild(container);
+
+
 
 	//  Perspective camera.
 	//  https://threejs.org/docs/#api/en/cameras/PerspectiveCamera
@@ -144,7 +153,8 @@ function setupThree(){
 	renderer.physicallyCorrectLights = true
 	renderer.toneMapping = THREE.ACESFilmicToneMapping
 	renderer.outputEncoding = THREE.sRGBEncoding
-	renderer.xr.enabled = true
+    renderer.xr.enabled = true
+    // before said VRButton
     // container.appendChild( ARButton.createButton( renderer ))
 
 
@@ -155,10 +165,7 @@ function setupThree(){
 			renderer.setPixelRatio(window.devicePixelRatio);
 			renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.xr.enabled = true; // we have to enable the renderer for webxr
-            // origina
             // container.appendChild(renderer.domElement);
-            // modification
-            // document.body.appendChild(renderer.domElement);
             
 ////////////////////////
 
